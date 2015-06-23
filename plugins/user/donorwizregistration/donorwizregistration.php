@@ -47,6 +47,9 @@ if (!class_exists('plgUserdonorwizregistration')) {
 				
 				$this -> sendWelcomeEmail($user);
 				
+				$donorwizGA = new DonorwizGA();
+				$donorwizGA -> sendEvent( 'User' , 'Registration' , $user['email'] ) ;
+								
 				$return_url=$app->input->get('return',false,'BASE64');
 				
 				$data=array('user'=>$user,'return_url'=>$return_url);
